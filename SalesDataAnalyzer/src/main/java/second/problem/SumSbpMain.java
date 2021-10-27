@@ -24,7 +24,7 @@ public class SumSbpMain {
         Configuration conf = new Configuration();
         
         Path inputPath = new Path("hdfs://127.0.0.1:9000/input/SalesJan2009.csv");
-        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/sum-sbp");
+        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/second-problem");
         
         JobConf job = new JobConf(conf, SumSbpMain.class);
         

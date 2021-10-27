@@ -23,7 +23,7 @@ public class CountSbdMain {
         Configuration conf = new Configuration();
         
         Path inputPath = new Path("hdfs://127.0.0.1:9000/input/SalesJan2009.csv");
-        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/count-sbd");
+        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/third-problem");
         
         JobConf job = new JobConf(conf, CountSbdMain.class);
         

@@ -23,7 +23,7 @@ public class SumPbtMain {
         Configuration conf = new Configuration();
         
         Path inputPath = new Path("hdfs://127.0.0.1:9000/input/SalesJan2009.csv");
-        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/sum-pbt");
+        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/first-problem");
         
         JobConf job = new JobConf(conf, SumPbtMain.class);
         
