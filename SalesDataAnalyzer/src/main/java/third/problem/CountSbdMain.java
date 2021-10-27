@@ -1,4 +1,4 @@
-package sum.product;
+package third.problem;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,25 +16,24 @@ import org.apache.hadoop.mapred.RunningJob;
 import org.apache.hadoop.mapred.TextOutputFormat;
 
 import common.SalesDataReducer;
-import sum.type.SumPbtMain;
 
-public class SumSbpMain {
-	public static void main( String[] args ) throws IOException
-    {
+public class CountSbdMain {
+
+	public static void main(String[] args) throws IOException {
         Configuration conf = new Configuration();
         
         Path inputPath = new Path("hdfs://127.0.0.1:9000/input/SalesJan2009.csv");
-        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/sum-sbp");
+        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/count-sbd");
         
-        JobConf job = new JobConf(conf, SumSbpMain.class);
+        JobConf job = new JobConf(conf, CountSbdMain.class);
         
-        job.setJobName("SumSalesByProduct");
-        job.setJarByClass(SumPbtMain.class);
+        job.setJobName("CountSalesByDay");
+        job.setJarByClass(CountSbdMain.class);
         
         job.setOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
         job.setOutputFormat(TextOutputFormat.class);
-        job.setMapperClass(SumSalesByProductMapper.class);
+        job.setMapperClass(CountSalesByDayMapper.class);
         job.setReducerClass(SalesDataReducer.class);
         
         FileInputFormat.setInputPaths(job, inputPath);
@@ -50,5 +49,6 @@ public class SumSbpMain {
         RunningJob result = JobClient.runJob(job);
         
         System.out.println("Success = " + result.isComplete());
-    }
+	}
+
 }

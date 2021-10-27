@@ -1,4 +1,4 @@
-package sum.type;
+package second.problem;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,24 +16,25 @@ import org.apache.hadoop.mapred.RunningJob;
 import org.apache.hadoop.mapred.TextOutputFormat;
 
 import common.SalesDataReducer;
+import first.problem.SumPbtMain;
 
-public class SumPbtMain {
-    public static void main( String[] args ) throws IOException
+public class SumSbpMain {
+	public static void main( String[] args ) throws IOException
     {
         Configuration conf = new Configuration();
         
         Path inputPath = new Path("hdfs://127.0.0.1:9000/input/SalesJan2009.csv");
-        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/sum-pbt");
+        Path outputPath = new Path("hdfs://127.0.0.1:9000/output/sum-sbp");
         
-        JobConf job = new JobConf(conf, SumPbtMain.class);
+        JobConf job = new JobConf(conf, SumSbpMain.class);
         
-        job.setJobName("SumPaymentsByType");
+        job.setJobName("SumSalesByProduct");
         job.setJarByClass(SumPbtMain.class);
         
         job.setOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
         job.setOutputFormat(TextOutputFormat.class);
-        job.setMapperClass(SumPaymentsByTypeMapper.class);
+        job.setMapperClass(SumSalesByProductMapper.class);
         job.setReducerClass(SalesDataReducer.class);
         
         FileInputFormat.setInputPaths(job, inputPath);
